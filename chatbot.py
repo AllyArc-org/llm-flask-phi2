@@ -25,7 +25,10 @@ def generate_response(input_text):
         attention_mask=attention_mask,
         max_length=100,
         num_return_sequences=1,
-        pad_token_id=tokenizer.eos_token_id
+        pad_token_id=tokenizer.eos_token_id,
+        do_sample=True,  # Set do_sample to True
+        temperature=0.9,  # Adjust the temperature if needed
+        top_p=0.6  # Adjust the top_p if needed
     )
 
     # Decode the generated response
