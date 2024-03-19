@@ -5,7 +5,12 @@ from flask import Flask, request, jsonify, render_template
 
 # Load the pre-trained model and tokenizer
 model_name = "AllyArc/llama_allyarc"  # Replace with your desired model name
-model = AutoModelForCausalLM.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    do_sample=True,
+    temperature=0.9,
+    top_p=0.6
+)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # Initialize Flask app
